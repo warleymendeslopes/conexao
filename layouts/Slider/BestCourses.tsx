@@ -2,99 +2,21 @@
 
 import { useState, useEffect, useRef } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
-
 import { getBestCourses } from "@/lib/api-list-area"
 import CourseByTag from "@/lib/interfaces/courses"
 import MusicCard from "@/component/Cards/CardCourses"
+import Link from "next/link"
+import { areaNameToAlias } from "@/ultius/sendDb"
+
 
 
 interface MusicSliderProps {
   title?: string
   modality?: string
+  area?: string
 }
 
-// Função simulada - substitua pela sua função real
-// async function getBestCourses(
-//   type: string,
-//   limit: number,
-//   search: string,
-//   modality: string,
-// ): Promise<{ data: Course[] }> {
-//   // Simular delay de API
-//   await new Promise((resolve) => setTimeout(resolve, 1000))
-
-//   // Dados simulados - substitua pela sua implementação real
-//   const mockData: Course[] = [
-//     {
-//       id: "1",
-//       category: "DAILY MIX",
-//       trackCount: 12,
-//       title: "Frontend Radio",
-//       coverImage: "/images/music-cover.png",
-//       coverAlt: "Frontend Radio cover",
-//     },
-//     {
-//       id: "2",
-//       category: "ROCK CLASSICS",
-//       trackCount: 25,
-//       title: "Guitar Heroes",
-//       coverImage: "/placeholder.svg?height=224&width=224",
-//       coverAlt: "Rock music cover",
-//     },
-//     {
-//       id: "3",
-//       category: "CHILL VIBES",
-//       trackCount: 18,
-//       title: "Lofi Study",
-//       coverImage: "/placeholder.svg?height=224&width=224",
-//       coverAlt: "Lofi music cover",
-//     },
-//     {
-//       id: "4",
-//       category: "WORKOUT",
-//       trackCount: 30,
-//       title: "High Energy",
-//       coverImage: "/placeholder.svg?height=224&width=224",
-//       coverAlt: "Workout music cover",
-//     },
-//     {
-//       id: "5",
-//       category: "JAZZ CLASSICS",
-//       trackCount: 22,
-//       title: "Smooth Jazz",
-//       coverImage: "/placeholder.svg?height=224&width=224",
-//       coverAlt: "Jazz music cover",
-//     },
-//     {
-//       id: "6",
-//       category: "ELECTRONIC",
-//       trackCount: 35,
-//       title: "EDM Hits",
-//       coverImage: "/placeholder.svg?height=224&width=224",
-//       coverAlt: "Electronic music cover",
-//     },
-//     {
-//       id: "7",
-//       category: "POP HITS",
-//       trackCount: 40,
-//       title: "Top 40",
-//       coverImage: "/placeholder.svg?height=224&width=224",
-//       coverAlt: "Pop music cover",
-//     },
-//     {
-//       id: "8",
-//       category: "INDIE ROCK",
-//       trackCount: 28,
-//       title: "Alternative",
-//       coverImage: "/placeholder.svg?height=224&width=224",
-//       coverAlt: "Indie rock cover",
-//     },
-//   ]
-
-//   return { data: mockData }
-// }
-
-export default function MusicSlider({ title = "Recomendado para você", modality = "pos-graduacao" }: MusicSliderProps) {
+export default function MusicSlider({ title = "Recomendado para você", modality = "pos-graduacao", area }: MusicSliderProps) {
   const [courses, setCourses] = useState<CourseByTag[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -292,7 +214,9 @@ export default function MusicSlider({ title = "Recomendado para você", modality
           }}
         >
           {infiniteCourses.map((course, index) => (
-            <div
+            <Link
+
+            href={`${areaNameToAlias(course.area)}/${course.alias}`}
               key={`${course._id}-${index}`}
               className="flex-shrink-0 px-3"
               style={{ width: `${100 / itemsPerSlide}%` }}
@@ -302,7 +226,7 @@ export default function MusicSlider({ title = "Recomendado para você", modality
                 title={course.name}
                 coverImage={course.photo_miniature}
               />
-            </div>
+            </Link>
           ))}
         </div>
       </div>

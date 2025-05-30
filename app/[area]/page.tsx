@@ -75,7 +75,7 @@ export default async function Page({
                     <div>
                         <div className="container mx-auto px-4 sm:px-40 mt-10 mb-10">
                             <div className="content-cards mt-5">
-                                <BestCourses />
+                                <BestCourses area={area}  />
                             </div>
                         </div>
                     </div>

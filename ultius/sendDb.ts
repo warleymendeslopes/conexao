@@ -128,3 +128,30 @@ export function eliasToName(elias: string): string {
   };
   return toElias[elias] || elias;
 }
+
+
+type CourseArea = {
+  qtd: number;
+  areaName: string;
+  miniature: string;
+  areaAlias: string;
+};
+
+const courseAreas: CourseArea[] = [
+  { qtd: 295, areaName: "Ciências da Saúde", miniature: "...", areaAlias: "ciencias-da-saude" },
+  { qtd: 626, areaName: "Educação", miniature: "...", areaAlias: "educacao" },
+  { qtd: 392, areaName: "Empresarial, TI e Negócios", miniature: "...", areaAlias: "empresarial-ti-e-negocios" },
+  { qtd: 52, areaName: "Engenharias", miniature: "...", areaAlias: "engenharias" },
+  { qtd: 12, areaName: "Estética", miniature: "...", areaAlias: "estetica" },
+  { qtd: 10, areaName: "Gastronomia", miniature: "...", areaAlias: "gastronomia" },
+  { qtd: 179, areaName: "Jurídica", miniature: "...", areaAlias: "juridica" },
+  { qtd: 96, areaName: "MBA Executivo", miniature: "...", areaAlias: "mba-executivo" },
+  { qtd: 57, areaName: "Meio Ambiente", miniature: "...", areaAlias: "meio-ambiente" },
+  { qtd: 34, areaName: "Psicologia", miniature: "...", areaAlias: "psicologia" },
+  { qtd: 33, areaName: "Serviço Social", miniature: "...", areaAlias: "servico-social" }
+];
+
+export function areaNameToAlias(name: string): string | undefined {
+  const area = courseAreas.find(a => a.areaName.toLowerCase() === name.toLowerCase());
+  return area?.areaAlias;
+}
