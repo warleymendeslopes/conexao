@@ -6,8 +6,6 @@ import { notFound } from "next/navigation";
 import CourseListing from "@/layouts/list-course/course-listing";
 import BestCourses from "@/layouts/Slider/BestCourses";
 import Accordion from "@/component/Accordion/accordion";
-import PrimaryButton from "@/component/Buttons/PrimaryButton";
-import Cards from "@/component/Cards/PrimaryCards";
 
 export default async function Page({
   params,
