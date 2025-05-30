@@ -1,6 +1,7 @@
 "use client"
 
 import HubSpotFormPosGraduacao from "@/component/HubSpot/FormHubSot"
+import ModulosAprendizagem from "@/layouts/acordeon/modulos-aprendizagem"
 import { Course } from "@/lib/interfaces/interface_detalhe_course"
 import { useEffect, useState } from "react"
 
@@ -177,41 +178,7 @@ export default function CourseContent({ modality, course }: { modality: string, 
                         {/* Módulos Section */}
                         <section>
                             <h2 className="text-3xl font-bold text-center mb-8">Módulos de Aprendizagem:</h2>
-
-                            <div className="space-y-6">
-                                {/* Módulo 1 */}
-                                <div className="flex gap-4">
-                                    <div className="bg-purple-600 px-4 py-2 rounded-lg font-semibold min-w-fit">Módulo 1</div>
-                                    <div className="flex-1">
-                                        <div className="bg-gray-800 p-4 rounded-lg">
-                                            <h4 className="font-semibold mb-2">Aquisição de L1 e L2 pelo Surdo</h4>
-                                            <div className="w-full bg-gray-700 h-1 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Módulo 2 */}
-                                <div className="flex gap-4">
-                                    <div className="bg-purple-600 px-4 py-2 rounded-lg font-semibold min-w-fit">Módulo 2</div>
-                                    <div className="flex-1">
-                                        <div className="bg-gray-800 p-4 rounded-lg">
-                                            <h4 className="font-semibold mb-2">Aspectos da Aquisição da Linguagem</h4>
-                                            <div className="w-full bg-gray-700 h-1 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Módulo 3 */}
-                                <div className="flex gap-4">
-                                    <div className="bg-purple-600 px-4 py-2 rounded-lg font-semibold min-w-fit">Módulo 3</div>
-                                    <div className="flex-1">
-                                        <div className="bg-gray-800 p-4 rounded-lg">
-                                            <h4 className="font-semibold mb-2">Aspectos da Produção de Textos como Segunda Língua</h4>
-                                            <div className="w-full bg-gray-700 h-1 rounded"></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <ModulosAprendizagem />
                         </section>
 
 
