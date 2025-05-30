@@ -62,7 +62,7 @@ export default async function Page({
           width={5}
         />
 
-        <CourseListing />
+        <CourseListing area={listingCourse} modality={"pos-graduacao"} />
       </>
     )
   }
