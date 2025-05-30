@@ -1,0 +1,51 @@
+h1.FormHubSpot.H1.text-center.font-bold {
+  font-size: 1.2rem;
+  line-height: normal;
+}
+
+.FormHubSpot.mx-auto.mt-4.max-w-md {
+  color: black;
+  font-size: 12px;
+  font-family: 'DM Sans';
+}
+
+.input input,
+select {
+  border: 1px solid #c9c9c99e;
+  width: 100%;
+  margin-top: 12px;
+  height: 36px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+label.hs-error-msg.hs-main-font-element {
+  font-size: 10px;
+  color: #da0101;
+}
+
+input.hs-button.primary.large {
+  background: #14f708;
+  padding: 15px;
+  width: 100%;
+  border-radius: 14px;
+  color: black;
+  margin-top: 22px;
+}
+
+label.hs-form-booleancheckbox-display {
+  display: flex;
+  flex-direction: row;
+}
+
+label.hs-form-booleancheckbox-display span {
+  margin-left: 10px;
+}
+
+label.hs-form-booleancheckbox-display input {
+  height: 14px;
+  width: auto;
+}
+
+.hs_recaptcha.hs-recaptcha.field.hs-form-field {
+  display: none;
+}

@@ -1,26 +1,135 @@
 @import "tailwindcss";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ECECEC;
+  --font-dm-sans: 'DM Sans', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  /* Fonte DM Sans */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ECECEC;
   }
 }
 
 body {
-  background: var(--background);
+  margin: 0;
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-dm-sans);
+}
+
+.poppins {
+  font-family: var(--font-poppins);
+}
+
+.dm-sans {
+  font-family: var(--font-dm-sans);
+}
+
+.banner {
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+.bannerDinamyc {
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+/* Mobile (até 767px) */
+@media (max-width: 767px) {
+
+  /* Estilos para dispositivos móveis */
+  .banner {
+    background-image: url('/banners/blackfriday-banner-pos.webp');
+  }
+}
+
+/* Tablet (768px a 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+  /* Estilos para tablets */
+  .banner {
+    background-image: url('/banners/blackfriday-banner-pos.webp');
+  }
+}
+
+/* Desktop (a partir de 1024px) */
+@media (min-width: 1024px) {
+
+  /* Estilos para desktops */
+  .banner {
+    background-image: url('/banners/blackfriday-banner-pos.webp');
+  }
+}
+
+.fontKrona{
+  font-family: var(--font-krona-one), sans-serif;
+}
+
+.fontTitle{
+  font-family: var(--font-poppins), sans-serif;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-left {
+  animation: slide-left 30s linear infinite;
+}
+
+.animate-slide-right {
+  animation: slide-right 30s linear infinite;
+}
+.card-course-program-pos {
+  background: linear-gradient(270deg, #ff080000, #ff0000);
+  padding: 2px;
+  border-radius: 10px;
+}
+.content-program-pos {
+  background: #ececec;
+  height: 100%;
+  border-radius: 10px;
+}
+.form-page-course-conexao {
+    color: white !important;
+}
+.form-page-course-conexao .input input, select {
+    color: white !important;
+    font-weight: 400;
+    font-size: small;
+    height: 47px;
+    border-radius: 8px;
+    padding: 12px;
+    font-family: 'Poppins';
+}
+.form-page-course-conexao .input input, select option {
+    color: #000000;
 }

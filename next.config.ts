@@ -1,7 +1,21 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  experimental: {},
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  env: {
+    CERTIFIER: process.env.CERTIFIER,
+  },
+  images: {
+    disableStaticImages: true,
+    domains: [
+      'storage.googleapis.com',
+      'thispersondoesnotexist.com',
+      'novo-site-unica.s3.amazonaws.com',
+    ],
+  },
 };
 
 export default nextConfig;

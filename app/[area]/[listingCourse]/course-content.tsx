@@ -1,0 +1,223 @@
+"use client"
+
+import HubSpotFormPosGraduacao from "@/component/HubSpot/FormHubSot"
+import { Course } from "@/lib/interfaces/interface_detalhe_course"
+import { useEffect, useState } from "react"
+
+export default function CourseContent({ modality, course }: { modality: string, course: Course }) {
+    const [timeLeft, setTimeLeft] = useState({
+        days: 0,
+        hours: 24,
+        minutes: 19,
+        seconds: 15,
+    })
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setTimeLeft((prev) => {
+                if (prev.seconds > 0) {
+                    return { ...prev, seconds: prev.seconds - 1 }
+                } else if (prev.minutes > 0) {
+                    return { ...prev, minutes: prev.minutes - 1, seconds: 59 }
+                } else if (prev.hours > 0) {
+                    return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 }
+                } else if (prev.days > 0) {
+                    return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 }
+                }
+                return prev
+            })
+        }, 1000)
+
+        return () => clearInterval(timer)
+    }, [])
+
+    return (
+        <div className="min-h-screen text-[#a31711]">
+            <div className="container mx-auto px-4 py-8">
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Fixed Sidebar - Aparece primeiro no mobile */}
+                    <div className="lg:col-span-1 lg:order-2">
+                        <div className="sticky top-30">
+                            <div className="bg-gray-800 border border-gray-700 rounded-lg overflow-hidden">
+                                {/* Timer */}
+                                <div className="bg-[#a31711] p-4 text-center">
+                                    <div className="flex items-center justify-center gap-2 text-sm font-medium">
+                                        <svg className="w-10 h-10" fill="white" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            />
+                                        </svg>
+                                        <span className="text-white text-2xl font-bold">
+                                            Acaba em: {timeLeft.days}d {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div className="p-6 text-center">
+                                    <HubSpotFormPosGraduacao
+                                        classForm={"form-page-course-conexao"}
+                                        curso={""}
+                                        cursoModalidade={""}
+                                        onFormSubmit={function (): void {
+                                            throw new Error("Function not implemented.")
+                                        }} />
+
+                                    {/* Social Proof */}
+                                    <div className="text-center">
+                                        <div className="flex items-center justify-center gap-2 text-green-400 font-semibold mb-1">
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"
+                                                />
+                                            </svg>
+                                            <span className="text-2xl">54</span>
+                                        </div>
+                                        <p className="text-xs text-gray-400 uppercase tracking-wide">
+                                            PESSOAS JÁ COMPRARAM
+                                            <br />
+                                            ESSE CURSO HOJE
+                                        </p>
+                                    </div>
+
+                                    {/* Terms */}
+                                    <p className="text-xs text-gray-500 mt-4">*Consulte condições</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="lg:col-span-2 lg:order-1 space-y-12">
+                        <section>
+                            <h1 className="text-3xl font-bold text-center mb-12">Programa de Curso</h1>
+                            <div className="grid md:grid-cols-2 gap-8 mb-12">
+                                <div className="card-course-program-pos">
+                                    <div className="p-6 content-program-pos">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+                                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                                                    />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-xl font-semibold">Pré-requisito</h3>
+                                        </div>
+                                        <p className="text-black">
+                                            {modality === "graduacao" && (
+                                                <>
+                                                    Indicado para as pessoas que possuem curso de Graduação em grau de Licenciatura (em qualquer outra área)
+                                                </>
+                                            )}
+                                            {modality === "pos-graduacao" && (
+                                                <>
+                                                    Graduação em qualquer área para nível de conhecimento. Em casos de atuação na área e registro no conselho profissional, a formação deverá ser específica.
+                                                </>
+                                            )}
+                                            {modality === "segunda-graduacao" && (
+                                                <>
+                                                    O curso é oferecido exclusivamente para quem já possui Licenciatura em Educação Física
+                                                </>
+                                            )}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="card-course-program-pos">
+                                    <div className="p-6 content-program-pos">
+                                        <div className="flex items-center gap-3 mb-4">
+                                            <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center">
+                                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={2}
+                                                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                                    />
+                                                </svg>
+                                            </div>
+                                            <h3 className="text-xl font-semibold">
+                                                {modality === "graduacao" && (
+                                                    <>
+                                                        {course.name === 'SISTEMAS DE INFORMAÇÃO' ? (
+                                                            <h2>8 Semestres</h2>
+                                                        ) : (
+                                                            <h2>{course.amountPeriodicity} Semestres</h2>
+                                                        )}
+
+                                                    </>
+                                                )}
+                                                {modality === "pos-graduacao" && (
+                                                    <>
+                                                        {course.workload} horas
+                                                    </>
+                                                )}
+                                                {modality === "segunda-graduacao" && (
+                                                    <>
+                                                        CURSO DE CURTA DURAÇÃO
+                                                    </>
+                                                )}
+
+                                            </h3>
+                                        </div>
+                                        <p className="text-black">
+                                            De carga horária que contempla vídeoaulas inovadoras e materiais didáticos exclusivos.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        {/* Módulos Section */}
+                        <section>
+                            <h2 className="text-3xl font-bold text-center mb-8">Módulos de Aprendizagem:</h2>
+
+                            <div className="space-y-6">
+                                {/* Módulo 1 */}
+                                <div className="flex gap-4">
+                                    <div className="bg-purple-600 px-4 py-2 rounded-lg font-semibold min-w-fit">Módulo 1</div>
+                                    <div className="flex-1">
+                                        <div className="bg-gray-800 p-4 rounded-lg">
+                                            <h4 className="font-semibold mb-2">Aquisição de L1 e L2 pelo Surdo</h4>
+                                            <div className="w-full bg-gray-700 h-1 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Módulo 2 */}
+                                <div className="flex gap-4">
+                                    <div className="bg-purple-600 px-4 py-2 rounded-lg font-semibold min-w-fit">Módulo 2</div>
+                                    <div className="flex-1">
+                                        <div className="bg-gray-800 p-4 rounded-lg">
+                                            <h4 className="font-semibold mb-2">Aspectos da Aquisição da Linguagem</h4>
+                                            <div className="w-full bg-gray-700 h-1 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Módulo 3 */}
+                                <div className="flex gap-4">
+                                    <div className="bg-purple-600 px-4 py-2 rounded-lg font-semibold min-w-fit">Módulo 3</div>
+                                    <div className="flex-1">
+                                        <div className="bg-gray-800 p-4 rounded-lg">
+                                            <h4 className="font-semibold mb-2">Aspectos da Produção de Textos como Segunda Língua</h4>
+                                            <div className="w-full bg-gray-700 h-1 rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
