@@ -12,7 +12,7 @@ export default function ListCourses({ modality }: { modality: string }) {
     const [currentPage, setCurrentPage] = useState(1)
     const debouceValue = useDebouce('', 400)
     const [dataCourse, setDataCourse] = useState<any>([])
-    const baseUrl = 'http://uniunica.edu.br/api/area';
+    const baseUrl = 'https://uniunica.edu.br/api/area';
     const params = new URLSearchParams({
         search: debouceValue,
         page: currentPage.toString(),
