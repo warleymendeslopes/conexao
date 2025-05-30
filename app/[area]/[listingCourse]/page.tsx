@@ -4,6 +4,10 @@ import { eliasToName } from "@/ultius/sendDb";
 import CourseContent from "./course-content";
 import { notFound } from "next/navigation";
 import CourseListing from "@/layouts/list-course/course-listing";
+import BestCourses from "@/layouts/Slider/BestCourses";
+import Accordion from "@/component/Accordion/accordion";
+import PrimaryButton from "@/component/Buttons/PrimaryButton";
+import Cards from "@/component/Cards/PrimaryCards";
 
 export default async function Page({
   params,
@@ -61,8 +65,46 @@ export default async function Page({
           alignment={'start'}
           width={5}
         />
-
         <CourseListing area={listingCourse} modality={"pos-graduacao"} />
+              <div>
+                <div className="container mx-auto px-4 sm:px-40 mt-10 mb-10">
+                  <div className="content-cards mt-5">
+                    <BestCourses />
+                  </div>
+                </div>
+              </div>
+              <div className="container mx-auto px-4 sm:px-40 mt-10 mb-10">
+                <div className="content-cards mt-5">
+                  <div className="mt-12">
+                    <h2 className="text-2xl md:text-3xl font-semibold text-[#A31711] mb-4 text-center sm:text-left">
+                      Perguntas Frequentes
+                    </h2>
+                    <div className="bg-zinc-200/80 rounded-lg overflow-hidden backdrop-blur-sm">
+                      <Accordion
+                        items={[
+                          {
+                            id: "faq1",
+                            title: "Como funciona o sistema de pagamento?",
+                            content:
+                              "Aceitamos cartões de crédito, débito, PIX e boleto bancário. O pagamento é processado de forma segura através de nossa plataforma.",
+                          },
+                          {
+                            id: "faq2",
+                            title: "Posso cancelar minha assinatura a qualquer momento?",
+                            content:
+                              "Sim, você pode cancelar sua assinatura a qualquer momento através do painel de controle ou entrando em contato com nosso suporte.",
+                          },
+                          {
+                            id: "faq3",
+                            title: "Há garantia de reembolso?",
+                            content: "Oferecemos garantia de reembolso de 30 dias para todos os nossos planos, sem perguntas.",
+                          },
+                        ]}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
       </>
     )
   }

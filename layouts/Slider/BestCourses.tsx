@@ -251,7 +251,7 @@ export default function MusicSlider({ title = "Recomendado para você", modality
           <h2 className="text-white text-2xl font-bold">{title}</h2>
         </div>
         <div className="bg-zinc-800 rounded-lg p-6 text-center">
-          <p className="text-zinc-400">Nenhum curso encontrado</p>
+          <p className="text-zinc-400">Buscando curso ...</p>
         </div>
       </div>
     )
