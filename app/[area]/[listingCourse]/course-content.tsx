@@ -3,6 +3,7 @@
 import HubSpotFormPosGraduacao from "@/component/HubSpot/FormHubSot"
 import ModulosAprendizagem from "@/layouts/acordeon/modulos-aprendizagem"
 import { Course } from "@/lib/interfaces/interface_detalhe_course"
+import Image from "next/image"
 import { useEffect, useState } from "react"
 
 export default function CourseContent({ modality, course }: { modality: string, course: Course }) {
@@ -177,10 +178,38 @@ export default function CourseContent({ modality, course }: { modality: string, 
 
                         {/* Módulos Section */}
                         <section>
-                            <h2 className="text-3xl font-bold text-center mb-8">Módulos de Aprendizagem:</h2>
-                            <ModulosAprendizagem />
+                            <h3 className="text-3xl font-bold text-center mb-8">Módulos de Aprendizagem:</h3>
+                            <ModulosAprendizagem  course={course} />
                         </section>
+                        
+                        {/* graph section */}
 
+                        <section className="flex items-center justify-center flex-col">
+                            {modality === "graduacao" && (
+                                <>
+                                <h3 className="text-3xl font-semibold text-center mb-8">Profissionais graduados ganham salários 144% maiores</h3>
+                                <Image
+                                width={500}
+                                height={500}
+                                alt="graph-graduation"
+                                src='/graph-graduation.webp'
+                                />
+                                </>
+                            )}
+                            {modality === 'segunda-graduacao' && (
+                                <>
+                                <h3 className="text-3xl font-semibold text-center mb-8">
+                                    Faça uma transição de carreira ou saia na frente em concursos e designações
+                                </h3>
+                                 <Image
+                                width={900}
+                                height={900}
+                                alt="graph-graduation"
+                                src='/graph-segunda-graduacao.webp'
+                                />
+                                </>
+                            )}
+                        </section>                      
 
                     </div>
                 </div>

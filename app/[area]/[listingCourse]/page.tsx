@@ -30,7 +30,9 @@ export default async function Page({
           alignment={'start'}
           width={5}
         />
+
         <CourseContent course={detailsCourseData.data} modality={area} />
+
 
       </>
     )
