@@ -26,6 +26,7 @@ export interface Certifier {
 
 export interface Course {
   paymentPlan: PaymentPlan;
+  alias: string;
   videoIntroduction: string | null;
   faculty: string | null;
   methodology: string;

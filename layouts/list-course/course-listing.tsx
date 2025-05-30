@@ -2,6 +2,7 @@
 
 import Button from "@/component/ui/button/Button"
 import { useDebouce } from "@/hooks/useDebounce"
+import { Course } from "@/lib/interfaces/interface_detalhe_course"
 import Link from "next/link"
 import { ChangeEvent, useEffect, useState } from "react"
 import useSWR from "swr"
@@ -62,7 +63,7 @@ export default function CourseListing({ area, modality }: { area: string, modali
         total: data?.paginate?.total,
     };
 
-    console.log('tags', activeTag)
+    console.log('tags', listAreaCourse)
     return (
         <div className=" min-h-screen py-12 px-4">
             <div className="max-w-4xl mx-auto">
@@ -115,13 +116,15 @@ export default function CourseListing({ area, modality }: { area: string, modali
                     ) : (
                         <>
                             {
-                                listAreaCourse.map((course: any, index: string) => (
+                                listAreaCourse.map((course: Course, index: string) => (
                                     <div
                                         key={index}
                                         className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
                                     >
 
-                                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                        <Link
+                                        href={`${area}/${course.alias}`}
+                                         className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                                             <div className="flex-1">
                                                 <h2 className="text-xl font-bold text-red-600 mb-3 leading-tight">{course.name}</h2>
                                                 <div className="flex items-center gap-2">
@@ -136,7 +139,7 @@ export default function CourseListing({ area, modality }: { area: string, modali
                                                     CONHECER CURSO
                                                 </button>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 ))
                             }
