@@ -27,6 +27,7 @@ export default async function Page({
           width={5}
         />
          <CourseContent course={detailsCourseData.data} modality={area} />
+         {console.log(detailsCourseData.data)}
 
       </>
     )
