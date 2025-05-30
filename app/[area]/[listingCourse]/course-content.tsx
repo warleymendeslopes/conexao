@@ -59,13 +59,51 @@ export default function CourseContent({ modality, course }: { modality: string, 
                                 </div>
 
                                 <div className="p-6 text-center">
-                                    <HubSpotFormPosGraduacao
+                                    {modality === 'graduacao' && (
+                                        <HubSpotFormPosGraduacao
                                         classForm={"form-page-course-conexao"}
-                                        curso={""}
-                                        cursoModalidade={""}
+                                        curso={"graduacao"}
+                                        cursoModalidade={"graduacao"}
                                         onFormSubmit={function (): void {
                                             throw new Error("Function not implemented.")
-                                        }} />
+
+                                        } } 
+                                        formId={"caa403a8-2b98-48aa-bf70-438761e89243"} />
+                                    )}
+                                    {modality === 'segunda-graduacao' && (
+                                        <HubSpotFormPosGraduacao
+                                        classForm={"form-page-course-conexao"}
+                                        curso={"segunda-graduacao"}
+                                        cursoModalidade={"segunda-graduacao"}
+                                        onFormSubmit={function (): void {
+                                            throw new Error("Function not implemented.")
+
+                                        } } 
+                                        formId={"35903b3b-be2b-46e5-9da4-dc466159a2a0"} />
+                                    )}
+                                    {modality === 'pos-graduacao' && (
+                                        <HubSpotFormPosGraduacao
+                                        classForm={"form-page-course-conexao"}
+                                        curso={"pos-graduacao"}
+                                        cursoModalidade={"pos-graduacao"}
+                                        onFormSubmit={function (): void {
+                                            throw new Error("Function not implemented.")
+
+                                        } } 
+                                        formId={"07ed6974-53d8-49b1-8d6c-1f30efdb3c06"} />
+                                    )}
+                                    {modality === 'disciplina-isolada' && (
+                                        <HubSpotFormPosGraduacao
+                                        classForm={"form-page-course-conexao"}
+                                        curso={"disciplina-isolada"}
+                                        cursoModalidade={"disciplina-isolada"}
+                                        onFormSubmit={function (): void {
+                                            throw new Error("Function not implemented.")
+
+                                        } } 
+                                        formId={"151d36f1-f588-42cd-aa35-848f21d1a10d"} />
+                                    )}
+                                   
 
                                     {/* Social Proof */}
                                     <div className="text-center">

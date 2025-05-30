@@ -1,0 +1,31 @@
+
+
+@keyframes dash {
+      to {
+        stroke-dashoffset: 0;
+      }
+}
+
+svg path {
+    animation: dash linear infinite;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+
+svg path:nth-child(3) {
+    stroke-dasharray: 4000;
+    stroke-dashoffset: 4000;
+}
+
+svg path:nth-child(1),
+svg path:nth-child(2) {
+    stroke-dasharray: 20000;
+    stroke-dashoffset: 20000;
+}
+svg.Load-Unica-Logo {
+    max-width: 50%;
+    height: auto;
+}

@@ -1,13 +1,14 @@
 'use client'
 import { useEffect, useState, useCallback } from 'react'
 import './hubSpotForm.css'
-import { pushActiveCampaign } from '@/ultius/sendDb'
+import { pushActiveCampaign } from '@/util/sendDb'
 
 type HubSpotFormPosGraduacaoProps = {
   curso: string
   cursoModalidade: string
   onFormSubmit: () => void
   classForm?: string
+  formId: string
 }
 
 const applyPhoneMask = () => {
@@ -60,6 +61,7 @@ const HubSpotFormPosGraduacao = ({
   cursoModalidade,
   onFormSubmit,
   classForm,
+  formId
 }: HubSpotFormPosGraduacaoProps) => {
   const [, setFormSent] = useState(false)
 
@@ -80,7 +82,7 @@ const HubSpotFormPosGraduacao = ({
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               ; (window.hbspt.forms.create as any)({
                 portalId: '47678762',
-                formId: '07ed6974-53d8-49b1-8d6c-1f30efdb3c06',
+                formId: formId,
                 target: '#hubspotForm',
                 onFormReady: function () {
                   const cursoField = document.querySelector(
@@ -154,8 +156,8 @@ const HubSpotFormPosGraduacao = ({
                   pushActiveCampaign({
                     idform: 359,
                     codForm: '2b7012fe6051bec79b48886ba678224d',
-                    dataLayer: 'pos-graduacao',
-                    courseModality: 'pos-graduacao',
+                    dataLayer: cursoModalidade,
+                    courseModality: cursoModalidade,
                     data: {
                       fullname: formData.nome,
                       email: formData.email,

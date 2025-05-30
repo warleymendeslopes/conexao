@@ -1,6 +1,6 @@
 import BannerAnoNovoHome from "@/layouts/Banners/bannerCourse";
 import { getDetailsArea, getDetailsCourse } from "@/lib/api-list-area"
-import { eliasToName } from "@/ultius/sendDb";
+import { eliasToName } from "@/util/sendDb";
 import CourseContent from "./course-content";
 import { notFound } from "next/navigation";
 import CourseListing from "@/layouts/list-course/course-listing";
