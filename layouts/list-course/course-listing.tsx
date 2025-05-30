@@ -1,5 +1,6 @@
 "use client"
 
+import Button from "@/component/ui/button/Button"
 import { useDebouce } from "@/hooks/useDebounce"
 import Link from "next/link"
 import { ChangeEvent, useEffect, useState } from "react"
@@ -52,6 +53,14 @@ export default function CourseListing({ area, modality }: { area: string, modali
             setListAreaCourse((prev: any) => prev.concat(...data.results));
     }, [data]);
 
+    const onPageChange = (page: number) => {
+        if (data?.results?.length > 0) setCurrentPage(page);
+    };
+    const paginate = {
+        currentPage,
+        perPage,
+        total: data?.paginate?.total,
+    };
 
     console.log('tags', activeTag)
     return (
@@ -104,30 +113,41 @@ export default function CourseListing({ area, modality }: { area: string, modali
                             <p className="text-gray-500 text-lg">Nenhum curso encontrado</p>
                         </div>
                     ) : (
-                        listAreaCourse.map((course: any, index: string) => (
-                            <div
-                                key={index}
-                                className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
-                            >
+                        <>
+                            {
+                                listAreaCourse.map((course: any, index: string) => (
+                                    <div
+                                        key={index}
+                                        className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow"
+                                    >
 
-                                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-                                    <div className="flex-1">
-                                        <h2 className="text-xl font-bold text-red-600 mb-3 leading-tight">{course.name}</h2>
-                                        <div className="flex items-center gap-2">
-                                            <span className="text-lg font-semibold text-gray-900">
-                                                Até 12x de R$ 29,90
-                                            </span>
-                                            <span className="text-sm text-gray-500 line-through">12X de R$ 79,90</span>
+                                        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                            <div className="flex-1">
+                                                <h2 className="text-xl font-bold text-red-600 mb-3 leading-tight">{course.name}</h2>
+                                                <div className="flex items-center gap-2">
+                                                    <span className="text-lg font-semibold text-gray-900">
+                                                        <b className="text-xs font-thin">Apartir de</b> 12x de R$ 29,90
+                                                    </span>
+                                                    <span className="text-sm text-gray-500 line-through">12X de R$ 79,90</span>
+                                                </div>
+                                            </div>
+                                            <div className="flex-shrink-0">
+                                                <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-md transition-colors">
+                                                    CONHECER CURSO
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div className="flex-shrink-0">
-                                        <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-md transition-colors">
-                                            CONHECER CURSO
-                                        </button>
-                                    </div>
-                                </div>
+                                ))
+                            }
+                            <div className="w-full flex justify-center">
+                                <Button className="text-sm font-bold" onClick={() => { onPageChange(currentPage + 1) }} >
+                                    Carregar mais cursos
+                                </Button>
                             </div>
-                        ))
+
+
+                        </>
                     )}
                 </div>
             </div>
