@@ -3,6 +3,7 @@ import { getDetailsArea, getDetailsCourse } from "@/lib/api-list-area"
 import { eliasToName } from "@/ultius/sendDb";
 import CourseContent from "./course-content";
 import { notFound } from "next/navigation";
+import CourseListing from "@/layouts/list-course/course-listing";
 
 export default async function Page({
   params,
@@ -60,6 +61,8 @@ export default async function Page({
           alignment={'start'}
           width={5}
         />
+
+        <CourseListing />
       </>
     )
   }
