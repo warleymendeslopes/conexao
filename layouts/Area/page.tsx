@@ -1,6 +1,7 @@
 'use client';
 import { getAreaURL } from "@/lib/api-list-area";
 import { areaList } from "@/lib/interfaces/list-area";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 
@@ -26,7 +27,8 @@ export default function ListAreas() {
                         ) : (
                             <div className="grid grid-cols-2 sm:grid-cols-4  gap-0 sm:gap-4">
                                 {area.map((a: areaList, index: number) => (
-                                    <div
+                                    <Link
+                                    href={`pos-graduacao/${a.areaAlias}`}
                                         key={index}
                                         className="p-1 sm:p5"
                                     >
@@ -52,7 +54,7 @@ export default function ListAreas() {
 
                                         </div>
 
-                                    </div>
+                                    </Link>
                                 ))}
                             </div>
                         )}

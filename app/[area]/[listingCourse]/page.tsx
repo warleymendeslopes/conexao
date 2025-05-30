@@ -1,7 +1,8 @@
 import BannerAnoNovoHome from "@/layouts/Banners/bannerCourse";
-import { getDetailsCourse } from "@/lib/api-list-area"
+import { getDetailsArea, getDetailsCourse } from "@/lib/api-list-area"
 import { eliasToName } from "@/ultius/sendDb";
 import CourseContent from "./course-content";
+import { notFound } from "next/navigation";
 
 export default async function Page({
   params,
@@ -10,8 +11,11 @@ export default async function Page({
 }) {
   const { area, listingCourse } = await params
   const detailsCourseData = await getDetailsCourse(listingCourse, area)
-  console.log(detailsCourseData)
-  if (detailsCourseData.data) {
+    if (!detailsCourseData.data && area != "pos-graduacao") {
+      notFound()
+    }
+  if (detailsCourseData.data && area != "pos-graduacao") {
+
     return (
       <>
         <BannerAnoNovoHome
@@ -26,9 +30,36 @@ export default async function Page({
           alignment={'start'}
           width={5}
         />
-         <CourseContent course={detailsCourseData.data} modality={area} />
-         {console.log(detailsCourseData.data)}
 
+        <CourseContent course={detailsCourseData.data} modality={area} />
+
+
+      </>
+    )
+  }
+  if (area === "pos-graduacao") {
+    const detailsData = await getDetailsArea(listingCourse);
+     if(!detailsData){
+      notFound()
+     }
+    return (
+      <>
+        <BannerAnoNovoHome
+          content={{
+            imgbanner: detailsData.image,
+            headerTitle: 'Pós-Graduação',
+            title: 'ONLINE',
+            subTitle: `Área de ${detailsData.name ?? listingCourse}`,
+            ctaName: "INSCREVA-SE AGORA",
+            benefitList:
+              [
+                { text: detailsData?.description ?? ' ' },
+              ],
+          }}
+          animation={true}
+          alignment={'start'}
+          width={5}
+        />
       </>
     )
   }

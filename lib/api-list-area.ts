@@ -92,15 +92,16 @@ export async function getDetailsCourse(course: string, modality: string) {
 
 
 export async function getDetailsArea(area: string) {
+    console.log(' entrou na funcao getDetailsArea', area)
     try {
         const response = await fetch(
-            `https://api-lyratec.institutoprominas.com.br/course_areas/show/${area}`,
+            `https://api-lyratec.institutoprominas.com.br/course_areas/show/${area}?searchother=false`,
             {
                 next: { revalidate },
             }
         );
         const data = await response.json();
-        return data.data;
+        return data.data[0];
     } catch (error) {
         console.error('error', error);
         throw error;
