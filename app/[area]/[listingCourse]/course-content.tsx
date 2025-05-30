@@ -247,6 +247,17 @@ export default function CourseContent({ modality, course }: { modality: string, 
                                 />
                                 </>
                             )}
+                            {modality === 'pos-graduacao' && (
+                              <>
+                                <h3 className="text-3xl font-semibold text-center mb-8">COM UMA PÓS, VOCÊ SAI NA FRENTE EM CONCURSOS PÚBLICOS</h3>
+                                 <Image
+                                width={700}
+                                height={700}
+                                alt="graph-graduation"
+                                src='/graph-red.png'
+                                />
+                              </>
+                            )}
                         </section>                      
 
                     </div>

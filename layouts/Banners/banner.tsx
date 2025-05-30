@@ -4,21 +4,22 @@ import OfferGraduacao from "@/component/Offers/graduacao";
 import OfferPos from "@/component/Offers/pos";
 import OfferSegundaGraduacao from "@/component/Offers/segundagraduacao";
 import { DataBanner } from "@/lib/interfaces/banners";
+import { Suspense } from "react";
 
 export default function BannerPos(
     { AlertDescriptions, imageBackgroud, area, width }: DataBanner) {
     return (
         <>
-           <div
-  className="bannerDinamyc h-[130vh] sm:h-[90vh] relative"
-  style={{
-    backgroundImage: `radial-gradient(
+            <div
+                className="bannerDinamyc h-[130vh] sm:h-[90vh] relative"
+                style={{
+                    backgroundImage: `radial-gradient(
     circle, rgba(0, 0, 0, 0) 0%, 
     rgba(255, 0, 0, 0.23) 100%), 
     url('/banners/${imageBackgroud}'
     )`,
-  }}
->
+                }}
+            >
 
                 <div className="container mx-auto px-4 ">
                     <div className={`w-full lg:w-${width || "130"} flex justify-center`}>
@@ -31,7 +32,9 @@ export default function BannerPos(
                                 className={`w-full sm:w-100 ${area === "pos-graduacao" ? "md:flex md:justify-center" : ""
                                     } flex justify-center`}
                             >
-                                <PrimaryButton />
+                                <Suspense fallback={<div>Carregando botão...</div>}>
+                                    <PrimaryButton />
+                                </Suspense>
                             </div>
                             {AlertDescriptions?.isActive === true && (
                                 <div className="flex justify-center mb-20 mt-5 ">

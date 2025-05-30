@@ -4,6 +4,7 @@ import PrimaryButton from "@/component/Buttons/PrimaryButton";
 import Cards from "@/component/Cards/PrimaryCards";
 import OfferPos from "@/component/Offers/pos";
 import BestCourses from "@/layouts/Slider/BestCourses";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
           <div className="w-full lg:w-130 flex justify-center">
             <div className="flex flex-col w-full ">
               <OfferPos />
-              <PrimaryButton />
+              <Suspense fallback={<div>Carregando botão...</div>}>
+                <PrimaryButton />
+              </Suspense>
               <div className="flex justify-center mb-20 mt-5 ">
                 <p className="text-center text-sm w-100">*Você só poderá ser matriculado se tiver Graduação e Colação de Grau!</p>
               </div>
@@ -34,7 +37,9 @@ export default function Home() {
               alunos em todo o Brasil.
             </p>
             <div className="hidden sm:flex justify-center sm:justify-start">
-              <PrimaryButton />
+              <Suspense fallback={<div>Carregando botão...</div>}>
+                <PrimaryButton />
+              </Suspense>
             </div>
 
           </div>
@@ -61,7 +66,9 @@ export default function Home() {
               icon="em24h.svg"
             />
             <div className="flex sm:hidden justify-center">
-              <PrimaryButton />
+              <Suspense fallback={<div>Carregando botão...</div>}>
+                <PrimaryButton />
+              </Suspense>
             </div>
           </div>
         </div>

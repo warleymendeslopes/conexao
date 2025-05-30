@@ -10,6 +10,7 @@ import BestCourses from "@/layouts/Slider/BestCourses"
 import PrimaryButton from "@/component/Buttons/PrimaryButton"
 import Cards from "@/component/Cards/PrimaryCards"
 import Accordion from "@/component/Accordion/accordion"
+import { Suspense } from "react"
 export default async function Page({
     params,
 }: {
@@ -40,7 +41,9 @@ export default async function Page({
                                     alunos em todo o Brasil.
                                 </p>
                                 <div className="hidden sm:flex justify-center sm:justify-start">
-                                    <PrimaryButton />
+                                    <Suspense fallback={<div>Carregando botão...</div>}>
+                                        <PrimaryButton />
+                                    </Suspense>
                                 </div>
 
                             </div>
@@ -67,7 +70,9 @@ export default async function Page({
                                     icon="em24h.svg"
                                 />
                                 <div className="flex sm:hidden justify-center">
-                                    <PrimaryButton />
+                                    <Suspense fallback={<div>Carregando botão...</div>}>
+                                        <PrimaryButton />
+                                    </Suspense>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +80,7 @@ export default async function Page({
                     <div>
                         <div className="container mx-auto px-4 sm:px-40 mt-10 mb-10">
                             <div className="content-cards mt-5">
-                                <BestCourses area={area}  />
+                                <BestCourses area={area} />
                             </div>
                         </div>
                     </div>
