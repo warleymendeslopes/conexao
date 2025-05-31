@@ -12,6 +12,7 @@ const fetcher = (url: string) =>
 const perPage = 12;
 
 export default function ListCourses({ modality }: { modality: string }) {
+
     const [currentPage, setCurrentPage] = useState(1);
     const debouceValue = useDebouce('', 400);
     const [dataCourse, setDataCourse] = useState<any>([]);
@@ -19,6 +20,7 @@ export default function ListCourses({ modality }: { modality: string }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const baseUrl = 'http://uniunica.edu.br/api/area';
+
     const params = new URLSearchParams({
         search: debouceValue,
         page: currentPage.toString(),

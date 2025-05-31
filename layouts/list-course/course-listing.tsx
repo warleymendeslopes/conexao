@@ -28,7 +28,7 @@ export default function CourseListing({ area, modality }: { area: string, modali
     const debouceValue = useDebouce(query, 400);
     const [listAreaCourse, setListAreaCourse] = useState<any>([]);
     const { data, isLoading } = useSWR(
-        `http://uniunica.edu.br/api/area?search=${debouceValue}&page=${currentPage}&perPage=${perPage}&area=${area}&tag=${activeTag}&modality=${modality}`,
+        `https://uniunica.edu.br/api/area?search=${debouceValue}&page=${currentPage}&perPage=${perPage}&area=${area}&tag=${activeTag}&modality=${modality}`,
         fetcher,
         {
             revalidateOnFocus: false,
