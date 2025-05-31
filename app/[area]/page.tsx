@@ -9,8 +9,8 @@ import AppleSlider from "@/layouts/Slider/apple-slide/apple-slider"
 import BestCourses from "@/layouts/Slider/BestCourses"
 import PrimaryButton from "@/component/Buttons/PrimaryButton"
 import Cards from "@/component/Cards/PrimaryCards"
-import Accordion from "@/component/Accordion/accordion"
 import { Suspense } from "react"
+import AccordionFAQ from "@/component/accordionPages/accordionpages"
 export default async function Page({
     params,
 }: {
@@ -95,28 +95,8 @@ export default async function Page({
                         <h2 className="text-2xl md:text-3xl font-semibold text-[#A31711] mb-4 text-center sm:text-left">
                             Perguntas Frequentes
                         </h2>
-                        <div className="bg-zinc-200/80 rounded-lg overflow-hidden backdrop-blur-sm">
-                            <Accordion
-                                items={[
-                                    {
-                                        id: "faq1",
-                                        title: "Como funciona o sistema de pagamento?",
-                                        content:
-                                            "Aceitamos cartões de crédito, débito, PIX e boleto bancário. O pagamento é processado de forma segura através de nossa plataforma.",
-                                    },
-                                    {
-                                        id: "faq2",
-                                        title: "Posso cancelar minha assinatura a qualquer momento?",
-                                        content:
-                                            "Sim, você pode cancelar sua assinatura a qualquer momento através do painel de controle ou entrando em contato com nosso suporte.",
-                                    },
-                                    {
-                                        id: "faq3",
-                                        title: "Há garantia de reembolso?",
-                                        content: "Oferecemos garantia de reembolso de 30 dias para todos os nossos planos, sem perguntas.",
-                                    },
-                                ]}
-                            />
+                        <div className=" rounded-lg overflow-hidden backdrop-blur-sm">
+                            <AccordionFAQ />
                         </div>
                     </div>
                 </div>
